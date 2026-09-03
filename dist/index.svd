@@ -1,43 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg
-    xmlns="http://www.w3.org/2000/svg"
-    xmlns:xlink="http://www.w3.org/1999/xlink"
-    width="100%"
-    height="100%"
-    viewBox="0 0 100 100"
-    preserveAspectRatio="none"
->
-    <foreignObject
-        x="0"
-        y="0"
-        width="100%"
-        height="100%"
-    >
-        <body
-            xmlns="http://www.w3.org/1999/xhtml"
-            style="
-                margin: 0;
-                padding: 0;
-                width: 100vw;
-                height: 100vh;
-                overflow: hidden;
-                background: #000;
-            "
-        >
-            <iframe
-                src="./index.html"
-                style="
-                    position: fixed;
-                    top: 0;
-                    left: 0;
-                    width: 100vw;
-                    height: 100vh;
-                    border: 0;
-                    margin: 0;
-                    padding: 0;
-                "
-                allow="fullscreen"
-            ></iframe>
-        </body>
-    </foreignObject>
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="100%"
+     height="100%">
+
+  <foreignObject x="0" y="0" width="100%" height="100%">
+    <body xmlns="http://www.w3.org/1999/xhtml"
+          style="margin:0;width:100%;height:100%;overflow:hidden">
+
+      <div id="app"></div>
+
+      <script>
+      <![CDATA[
+      (function () {
+          const base = new URL("./", location.href);
+
+          function loadScript(src, module = false) {
+              const script =
+                  document.createElementNS(
+                      "http://www.w3.org/1999/xhtml",
+                      "script"
+                  );
+
+              if (module)
+                  script.type = "module";
+
+              script.src = new URL(src, base).href;
+
+              document.body.appendChild(script);
+
+              return script;
+          }
+
+          function loadCSS(src) {
+              const link =
+                  document.createElementNS(
+                      "http://www.w3.org/1999/xhtml",
+                      "link"
+                  );
+
+              link.rel = "stylesheet";
+              link.href = new URL(src, base).href;
+
+              document.head.appendChild(link);
+          }
+
+          /*
+           * Load your CSS
+           */
+          loadCSS("./css/main.css");
+
+          /*
+           * Load the Scramjet/controller files
+           */
+          loadScript("./scramjet/scramjet.js");
+          loadScript("./controller/controller.api.js");
+
+          /*
+           * Load your application
+           */
+          loadScript("./index.js");
+
+          /*
+           * Optional JS files
+           */
+          loadScript("./js/tabLogic.js");
+          loadScript("./js/iframeControls.js");
+
+      })();
+      ]]>
+      </script>
+
+    </body>
+  </foreignObject>
 </svg>
