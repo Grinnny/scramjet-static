@@ -7,7 +7,6 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Document</title>
       <link href="css/main.css" rel="stylesheet" />
-      </head>
       <div class="flex justify-center relative items-center flex-col" style="background-color: #050505; height:80px; top: 0px; z-index: 10; filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));" id="search-Container">
         <div style="height: 40px; width:90%;" class="flex flex-row gap-6" id="tabHolder">
             <div id="tab" class="tabExample tab0" style="height:30px; width:150px; border-radius: 5px;">
@@ -37,6 +36,7 @@
                 -FAV, Scramjet 2.0.67 Proxy Demo
             </div>
     </footer>
+    </head>
     </body>
   </foreignObject>
   <script><![CDATA[
